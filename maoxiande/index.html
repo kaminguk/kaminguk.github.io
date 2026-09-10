@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>冒险的阿曼达隐藏结局 - 触发条件、剧情解析与全结局收集指南</title>
+<meta name="description" content="冒险的阿曼达隐藏结局怎么触发？本文整理隐藏结局的前置条件、关键选择、道具收集与剧情解析，并附常见问题与全结局收集思路，帮助玩家顺利解锁真结局。">
+<meta name="keywords" content="冒险的阿曼达隐藏结局,冒险的阿曼达,隐藏结局触发,真结局,结局攻略,剧情解析">
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+<style>
+  :root{
+    --ink:#1b1a2e;
+    --ink-soft:#4a4763;
+    --paper:#f5f2fb;
+    --card:#ffffff;
+    --violet:#6b4ee6;
+    --violet-deep:#4a2fc4;
+    --amber:#f7a83c;
+    --teal:#2fb8a8;
+    --line:#e2dcf3;
+    --shadow:0 10px 30px rgba(60,40,140,.10);
+    --radius:16px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:"PingFang SC","Microsoft YaHei","Hiragino Sans GB",system-ui,-apple-system,"Segoe UI",sans-serif;
+    background:var(--paper);
+    color:var(--ink);
+    line-height:1.75;
+    font-size:16px;
+  }
+  img{max-width:100%;}
+  a{color:inherit;text-decoration:none;}
+  .wrap{width:100%;max-width:1180px;margin:0 auto;padding:0 20px;}
+
+  /* ---------- 顶部 ---------- */
+  .site-header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(245,242,251,.92);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .header-inner{
+    display:flex;align-items:center;justify-content:space-between;
+    gap:18px;min-height:66px;flex-wrap:wrap;
+  }
+  .brand{display:flex;align-items:center;gap:11px;font-weight:800;font-size:1.12rem;letter-spacing:.5px;}
+  .brand-mark{
+    width:38px;height:38px;border-radius:12px;
+    background:linear-gradient(135deg,var(--violet),var(--teal));
+    display:grid;place-items:center;color:#fff;font-size:1.05rem;
+    box-shadow:0 6px 16px rgba(107,78,230,.35);
+  }
+  .brand small{display:block;font-size:.68rem;font-weight:500;color:var(--ink-soft);letter-spacing:2px;}
+  .main-nav{display:flex;gap:6px;flex-wrap:wrap;}
+  .main-nav a{
+    padding:8px 14px;border-radius:999px;font-size:.92rem;color:var(--ink-soft);
+    transition:.22s;
+  }
+  .main-nav a:hover{background:#ece7fb;color:var(--violet-deep);}
+
+  /* ---------- 首屏 ---------- */
+  .hero{
+    position:relative;overflow:hidden;
+    background:
+      radial-gradient(900px 380px at 12% -10%, rgba(107,78,230,.20), transparent 62%),
+      radial-gradient(700px 340px at 92% 6%, rgba(47,184,168,.20), transparent 60%),
+      linear-gradient(180deg,#fbfaff,#f2eefc);
+    border-bottom:1px solid var(--line);
+  }
+  .hero::after{
+    content:"";position:absolute;inset:auto -60px -120px auto;
+    width:280px;height:280px;border-radius:50%;
+    background:radial-gradient(circle,rgba(247,168,60,.28),transparent 68%);
+  }
+  .hero-inner{
+    display:grid;grid-template-columns:1.35fr .9fr;gap:44px;
+    padding:58px 0 62px;position:relative;z-index:2;
+  }
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    background:#fff;border:1px solid var(--line);border-radius:999px;
+    padding:6px 15px;font-size:.8rem;color:var(--violet-deep);font-weight:600;
+    box-shadow:var(--shadow);
+  }
+  .eyebrow span{width:7px;height:7px;border-radius:50%;background:var(--amber);}
+  .hero h1{
+    font-size:2.5rem;line-height:1.28;margin:20px 0 16px;letter-spacing:-.5px;
+  }
+  .hero h1 em{
+    font-style:normal;
+    background:linear-gradient(120deg,var(--violet),var(--teal));
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .hero p.lead{font-size:1.06rem;color:var(--ink-soft);margin:0 0 26px;max-width:620px;}
+  .hero-actions{display:flex;gap:12px;flex-wrap:wrap;}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:12px 24px;border-radius:999px;font-weight:600;font-size:.95rem;
+    border:1px solid transparent;cursor:pointer;transition:.22s;
+  }
+  .btn-primary{background:var(--violet);color:#fff;box-shadow:0 10px 24px rgba(107,78,230,.32);}
+  .btn-primary:hover{background:var(--violet-deep);transform:translateY(-2px);}
+  .btn-ghost{background:#fff;border-color:var(--line);color:var(--ink);}
+  .btn-ghost:hover{border-color:var(--violet);color:var(--violet-deep);}
+
+  .hero-panel{
+    background:var(--card);border:1px solid var(--line);border-radius:22px;
+    padding:26px 24px;box-shadow:var(--shadow);align-self:start;
+  }
+  .hero-panel h2{font-size:1.05rem;margin:0 0 14px;display:flex;align-items:center;gap:9px;}
+  .hero-panel h2::before{content:"";width:4px;height:18px;border-radius:3px;background:var(--amber);}
+  .quick-list{list-style:none;margin:0;padding:0;display:grid;gap:11px;}
+  .quick-list li{
+    display:flex;gap:11px;font-size:.92rem;color:var(--ink-soft);
+    padding-bottom:11px;border-bottom:1px dashed var(--line);
+  }
+  .quick-list li:last-child{border-bottom:0;padding-bottom:0;}
+  .quick-list b{color:var(--ink);}
+  .dot{
+    flex:0 0 auto;width:22px;height:22px;border-radius:8px;
+    background:#efeafd;color:var(--violet-deep);
+    display:grid;place-items:center;font-size:.72rem;font-weight:700;margin-top:2px;
+  }
+
+  /* ---------- 通用区块 ---------- */
+  section{padding:56px 0;}
+  .section-head{margin-bottom:30px;max-width:760px;}
+  .section-head h2{font-size:1.62rem;margin:0 0 10px;letter-spacing:-.3px;}
+  .section-head p{margin:0;color:var(--ink-soft);font-size:.98rem;}
+  .tag{
+    display:inline-block;font-size:.75rem;font-weight:700;letter-spacing:1px;
+    color:var(--teal);background:#e6f7f4;border-radius:6px;
+    padding:3px 10px;margin-bottom:12px;
+  }
+
+  .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+  .grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;}
+  .card{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    padding:24px 22px;box-shadow:0 4px 16px rgba(60,40,140,.05);
+    transition:.25s;
+  }
+  .card:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:#d6cdf5;}
+  .card h3{font-size:1.08rem;margin:0 0 10px;}
+  .card p{margin:0;font-size:.93rem;color:var(--ink-soft);}
+  .card .num{
+    font-size:.78rem;font-weight:800;color:#fff;background:var(--violet);
+    width:26px;height:26px;border-radius:9px;display:grid;place-items:center;margin-bottom:12px;
+  }
+  .card.teal .num{background:var(--teal);}
+  .card.amber .num{background:var(--amber);}
+
+  /* ---------- 条件清单 ---------- */
+  .checklist{list-style:none;margin:0;padding:0;display:grid;gap:14px;}
+  .checklist li{
+    display:flex;gap:13px;background:#fff;border:1px solid var(--line);
+    border-radius:14px;padding:16px 18px;font-size:.95rem;
+  }
+  .checklist .tick{
+    flex:0 0 auto;width:24px;height:24px;border-radius:50%;
+    background:#e6f7f4;color:var(--teal);display:grid;place-items:center;
+    font-weight:800;font-size:.78rem;margin-top:2px;
+  }
+  .checklist b{display:block;margin-bottom:3px;}
+  .checklist span{color:var(--ink-soft);}
+
+  /* ---------- 步骤时间线 ---------- */
+  .steps{position:relative;margin:0;padding:0;list-style:none;}
+  .steps::before{
+    content:"";position:absolute;left:17px;top:8px;bottom:8px;width:2px;
+    background:linear-gradient(180deg,var(--violet),var(--teal));
+    opacity:.3;
+  }
+  .steps li{position:relative;padding:0 0 26px 54px;}
+  .steps li:last-child{padding-bottom:0;}
+  .steps .step-no{
+    position:absolute;left:0;top:0;width:36px;height:36px;border-radius:12px;
+    background:#fff;border:2px solid var(--violet);
+    color:var(--violet-deep);font-weight:800;font-size:.9rem;
+    display:grid;place-items:center;
+  }
+  .steps h3{margin:4px 0 6px;font-size:1.04rem;}
+  .steps p{margin:0;color:var(--ink-soft);font-size:.94rem;}
+
+  /* ---------- 结局对照表 ---------- */
+  .table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--radius);background:#fff;}
+  table{border-collapse:collapse;width:100%;min-width:620px;font-size:.93rem;}
+  thead th{
+    background:#f0ecfc;color:var(--violet-deep);text-align:left;
+    padding:14px 18px;font-size:.86rem;letter-spacing:.5px;white-space:nowrap;
+  }
+  tbody td{padding:14px 18px;border-top:1px solid var(--line);color:var(--ink-soft);vertical-align:top;}
+  tbody tr:hover{background:#faf8ff;}
+  tbody td:first-child{color:var(--ink);font-weight:600;white-space:nowrap;}
+
+  /* ---------- 提示条 ---------- */
+  .notice{
+    display:flex;gap:16px;align-items:flex-start;
+    background:linear-gradient(120deg,#fff5e6,#fffaf2);
+    border:1px solid #f6dfbc;border-radius:var(--radius);
+    padding:22px 24px;
+  }
+  .notice .icon{
+    flex:0 0 auto;width:40px;height:40px;border-radius:12px;
+    background:var(--amber);color:#fff;display:grid;place-items:center;
+    font-weight:800;font-size:1.1rem;
+  }
+  .notice h3{margin:0 0 6px;font-size:1.02rem;}
+  .notice p{margin:0;font-size:.93rem;color:#7a5a24;}
+
+  /* ---------- FAQ ---------- */
+  .faq{display:grid;gap:12px;}
+  details{
+    background:#fff;border:1px solid var(--line);border-radius:14px;
+    padding:0 20px;transition:.2s;
+  }
+  details[open]{border-color:#d6cdf5;box-shadow:var(--shadow);}
+  summary{
+    cursor:pointer;list-style:none;padding:17px 0;font-weight:600;font-size:.99rem;
+    display:flex;justify-content:space-between;gap:14px;align-items:center;
+  }
+  summary::-webkit-details-marker{display:none;}
+  summary::after{
+    content:"+";font-size:1.25rem;color:var(--violet);font-weight:400;flex:0 0 auto;
+  }
+  details[open] summary::after{content:"–";}
+  details p{margin:0 0 18px;font-size:.93rem;color:var(--ink-soft);}
+
+  /* ---------- 侧栏 + 主内容 ---------- */
+  .layout{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:36px;align-items:start;}
+  .side-card{
+    background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+    padding:22px;box-shadow:0 4px 16px rgba(60,40,140,.05);
+  }
+  .side-card + .side-card{margin-top:20px;}
+  .side-card h3{font-size:1rem;margin:0 0 14px;}
+  .side-list{list-style:none;margin:0;padding:0;display:grid;gap:12px;}
+  .side-list li{font-size:.9rem;color:var(--ink-soft);display:flex;gap:10px;}
+  .side-list li i{
+    font-style:normal;color:var(--violet);font-weight:800;font-size:.8rem;margin-top:3px;
+  }
+  .side-card.highlight{
+    background:linear-gradient(150deg,var(--violet),#3f2aa8);color:#fff;border:0;
+  }
+  .side-card.highlight h3{color:#fff;}
+  .side-card.highlight p{color:rgba(255,255,255,.85);font-size:.9rem;margin:0 0 14px;}
+  .side-card.highlight .btn{background:#fff;color:var(--violet-deep);width:100%;justify-content:center;}
+
+  /* ---------- 页脚 ---------- */
+  .site-footer{
+    background:#1b1a2e;color:#c9c5e0;padding:50px 0 26px;margin-top:20px;
+  }
+  .footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:30px;}
+  .site-footer h4{color:#fff;font-size:.95rem;margin:0 0 14px;}
+  .site-footer p{font-size:.86rem;line-height:1.8;margin:0;color:#9d98bd;}
+  .footer-links{list-style:none;margin:0;padding:0;display:grid;gap:9px;}
+  .footer-links a{font-size:.86rem;color:#9d98bd;transition:.2s;}
+  .footer-links a:hover{color:#fff;}
+  .footer-bottom{
+    margin-top:34px;padding-top:20px;border-top:1px solid rgba(255,255,255,.1);
+    display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;
+    font-size:.8rem;color:#7e799e;
+  }
+
+  /* ---------- 响应式 ---------- */
+  @media (max-width:980px){
+    .hero-inner{grid-template-columns:1fr;gap:30px;padding:44px 0 50px;}
+    .hero h1{font-size:2.05rem;}
+    .grid-3{grid-template-columns:repeat(2,1fr);}
+    .layout{grid-template-columns:1fr;}
+    .footer-grid{grid-template-columns:1fr 1fr;}
+  }
+  @media (max-width:640px){
+    body{font-size:15px;}
+    .header-inner{min-height:auto;padding:12px 0;}
+    .main-nav{width:100%;overflow-x:auto;flex-wrap:nowrap;padding-bottom:4px;}
+    .main-nav a{white-space:nowrap;font-size:.86rem;padding:7px 12px;}
+    .hero h1{font-size:1.72rem;}
+    .hero p.lead{font-size:.98rem;}
+    .grid-3,.grid-2{grid-template-columns:1fr;}
+    section{padding:40px 0;}
+    .section-head h2{font-size:1.35rem;}
+    .footer-grid{grid-template-columns:1fr;}
+    .steps li{padding-left:48px;}
+    .notice{flex-direction:column;gap:12px;}
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <div class="brand">
+      <div class="brand-mark">阿</div>
+      <div>
+        冒险的阿曼达
+        <small>隐藏结局研究站</small>
+      </div>
+    </div>
+    <nav class="main-nav" aria-label="主导航">
+      <a href="#conditions">触发条件</a>
+      <a href="#steps">解锁流程</a>
+      <a href="#endings">结局对照</a>
+      <a href="#analysis">剧情解析</a>
+      <a href="#faq">常见问题</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- 首屏 -->
+  <section class="hero">
+    <div class="wrap hero-inner">
+      <div>
+        <div class="eyebrow"><span></span>剧情向解谜 · 结局收集专题</div>
+        <h1>冒险的阿曼达隐藏结局：<em>触发条件与完整解锁思路</em></h1>
+        <p class="lead">
+          《冒险的阿曼达》的隐藏结局并不是靠单一选项就能拿到，它通常要求玩家在整条主线中保持特定行为，并在关键节点做出正确判断。本页把散落在各章节里的线索整理成一份条理清晰的解锁指南，帮助你理解隐藏结局究竟“藏”在哪里。
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#conditions">查看触发条件</a>
+          <a class="btn btn-ghost" href="#faq">常见疑问解答</a>
+        </div>
+      </div>
+
+      <aside class="hero-panel">
+        <h2>先看这五点</h2>
+        <ul class="quick-list">
+          <li><span class="dot">1</span><div><b>隐藏结局需要前置存档</b>：多数情况下要在最终章之前完成全部支线，否则无法进入隐藏分支。</div></li>
+          <li><span class="dot">2</span><div><b>关键道具不可跳过</b>：部分道具一旦错过章节，就只能重开或读档补回。</div></li>
+          <li><span class="dot">3</span><div><b>对话选项影响走向</b>：与阿曼达的几次关键对话会改变她的信任状态。</div></li>
+          <li><span class="dot">4</span><div><b>顺序比速度重要</b>：探索顺序错误会导致隐藏线索不刷新。</div></li>
+          <li><span class="dot">5</span><div><b>建议单独留一个存档</b>：方便反复尝试不同分支，而不影响主进度。</div></li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <!-- 触发条件 -->
+  <section id="conditions">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="tag">前置准备</span>
+        <h2>隐藏结局的触发条件有哪些</h2>
+        <p>不同版本或不同平台的具体判定可能略有差异，但整体逻辑通常围绕“完成度、关键选择、道具收集”三个维度展开。以下条件按优先级排列，建议逐项核对。</p>
+      </div>
+
+      <ul class="checklist">
+        <li>
+          <span class="tick">✓</span>
+          <div>
+            <b>主线推进到最终章之前</b>
+            <span>隐藏分支一般在终章入口处判定，因此需要在此之前完成所有可交互的支线内容，包括地图角落里的可选场景。</span>
+          </div>
+        </li>
+        <li>
+          <span class="tick">✓</span>
+          <div>
+            <b>完成阿曼达相关支线</b>
+            <span>与主角阿曼达直接相关的支线往往承担着“信任度”的判定功能，漏做其中一环，隐藏对话就可能不会出现。</span>
+          </div>
+        </li>
+        <li>
+          <span class="tick">✓</span>
+          <div>
+            <b>收集全部关键道具</b>
+            <span>常见的包括信件、钥匙、照片一类带有剧情说明作用的物品。它们通常藏在需要绕路才能到达的位置。</span>
+          </div>
+        </li>
+        <li>
+          <span class="tick">✓</span>
+          <div>
+            <b>关键对话选择特定回应</b>
+            <span>面对阿曼达的提问时，选择偏向“倾听与陪伴”的回应，通常比直接推进剧情的选项更容易保留隐藏线。</span>
+          </div>
+        </li>
+        <li>
+          <span class="tick">✓</span>
+          <div>
+            <b>不使用跳过或快速通关手段</b>
+            <span>部分作品会检测玩家是否完整观看过特定过场。跳过演出可能导致隐藏标记未被写入。</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 解锁流程 -->
+  <section id="steps" style="background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line);">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="tag">流程梳理</span>
+        <h2>按顺序解锁隐藏结局的六个阶段</h2>
+        <p>把复杂的条件拆成阶段之后，你会发现隐藏结局的核心思路是“不要急着推进主线”。下面按游戏进程给出建议顺序。</p>
+      </div>
+
+      <ol class="steps">
+        <li>
+          <div class="step-no">01</div>
+          <h3>开局：建立完整探索习惯</h3>
+          <p>从第一章开始就养成走遍地图、与所有可交互对象对话的习惯。隐藏结局的许多线索在前期只是“看起来无关的细节”，但后期会成为判定依据。</p>
+        </li>
+        <li>
+          <div class="step-no">02</div>
+          <h3>前期：优先完成阿曼达的个人支线</h3>
+          <p>当支线列表中出现与阿曼达直接相关的内容时，建议优先处理。这类支线通常包含角色背景信息，也是隐藏结局的情感铺垫。</p>
+        </li>
+        <li>
+          <div class="step-no">03</div>
+          <h3>中期：收集分散的关键道具</h3>
+          <p>对照道具栏，确认信件、照片、钥匙等物品是否齐全。若某件道具长时间未出现，多半意味着对应区域还有未触发的交互点。</p>
+        </li>
+        <li>
+          <div class="step-no">04</div>
+          <h3>中后期：留意对话中的特殊提示</h3>
+          <p>当 NPC 提到“再想想”“还有别的地方没去过”这类带有引导意味的台词时，通常意味着隐藏内容就在附近，值得回头再探索一次。</p>
+        </li>
+        <li>
+          <div class="step-no">05</div>
+          <h3>终章前：确认完成度并单独存档</h3>
+          <p>在进入最终章之前手动保存一个独立存档。这样即使选错分支，也可以快速回退，而不用重玩整个流程。</p>
+        </li>
+        <li>
+          <div class="step-no">06</div>
+          <h3>终章：做出隐藏分支对应的选择</h3>
+          <p>最终选择通常会在两个方向之间摇摆。若前面的条件全部满足，隐藏选项或隐藏场景会自然出现，此时按提示推进即可看到隐藏结局。</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- 结局对照 -->
+  <section id="endings">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="tag">结局收集</span>
+        <h2>普通结局与隐藏结局的差异对照</h2>
+        <p>下表用于帮助你在收集过程中判断自己目前处于哪条路线。具体名称与内容以你所游玩的实际版本为准。</p>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>结局类型</th>
+              <th>触发方式</th>
+              <th>剧情侧重</th>
+              <th>收集建议</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>普通结局</td>
+              <td>按主线流程直接推进至终章</td>
+              <td>以主线目标收束，节奏较快</td>
+              <td>适合首次通关，先熟悉整体剧情</td>
+            </tr>
+            <tr>
+              <td>分支结局</td>
+              <td>在关键节点做出特定选择</td>
+              <td>补充部分角色视角，信息量中等</td>
+              <td>利用存档点反复尝试不同选项</td>
+            </tr>
+            <tr>
+              <td>隐藏结局</td>
+              <td>完成全部前置条件后进入隐藏分支</td>
+              <td>补完核心角色的背景与动机</td>
+              <td>建议在二周目或读档状态下挑战</td>
+            </tr>
+            <tr>
+              <td>收集类结局</td>
+              <td>达成指定道具或支线完成度</td>
+              <td>偏向世界观补充，叙事较弱</td>
+              <td>适合喜欢挖掘设定的玩家</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- 剧情解析 + 侧栏 -->
+  <section id="analysis">
+    <div class="wrap layout">
+      <div>
+        <div class="section-head">
+          <span class="tag">剧情解析</span>
+          <h2>隐藏结局想表达什么</h2>
+          <p>隐藏结局的价值往往不在于“多一个结尾”，而在于它重新解释了玩家此前看到的一切。理解这一点，能让整个探索过程更有方向感。</p>
+        </div>
+
+        <div class="grid-2">
+          <article class="card">
+            <div class="num">A</div>
+            <h3>角色动机的补完</h3>
+            <p>在常规路线中，阿曼达的很多行为可能显得突兀。隐藏结局通常会通过额外片段交代她的过去与顾虑，让此前的选择变得可以理解。</p>
+          </article>
+          <article class="card teal">
+            <div class="num">B</div>
+            <h3>叙事结构的闭合</h3>
+            <p>隐藏结局往往回收了前期埋下的伏笔，例如反复出现的物件、台词或场景。它们不是装饰，而是通往真结局的路标。</p>
+          </article>
+          <article class="card amber">
+            <div class="num">C</div>
+            <h3>玩家行为的回应</h3>
+            <p>部分作品会把“玩家是否认真探索”本身当作叙事的一部分。你在支线与道具上的投入，最终会转化为隐藏结局中的情感回报。</p>
+          </article>
+          <article class="card">
+            <div class="num">D</div>
+            <h3>主题的重新落点</h3>
+            <p>冒险类作品常以成长与陪伴为主题。隐藏结局通常会把这一主题说得更直白，也更贴近角色本身的处境。</p>
+          </article>
+        </div>
+
+        <div class="notice" style="margin-top:26px;">
+          <div class="icon">!</div>
+          <div>
+            <h3>关于版本差异的说明</h3>
+            <p>同一作品在不同平台或更新版本中，隐藏结局的触发细节可能存在差别。若按本页思路仍未解锁，建议确认当前版本号，并检查是否有尚未完成的支线或未拾取的道具。</p>
+          </div>
+        </div>
+      </div>
+
+      <aside>
+        <div class="side-card">
+          <h3>容易遗漏的检查点</h3>
+          <ul class="side-list">
+            <li><i>01</i><div>地图边缘的可选区域是否全部进入过</div></li>
+            <li><i>02</i><div>道具栏中是否仍有未读说明的物品</div></li>
+            <li><i>03</i><div>与阿曼达的对话是否出现过特殊选项</div></li>
+            <li><i>04</i><div>支线列表是否显示为全部完成</div></li>
+            <li><i>05</i><div>是否在终章前保留了独立存档</div></li>
+          </ul>
+        </div>
+        <div class="side-card highlight">
+          <h3>推荐游玩顺序</h3>
+          <p>第一遍随性体验主线，第二遍带着清单补齐支线与道具，再挑战隐藏结局，体验通常最完整。</p>
+          <a class="btn" href="#steps">回到解锁流程</a>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" style="background:#fff;border-top:1px solid var(--line);">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="tag">常见问题</span>
+        <h2>关于隐藏结局的高频疑问</h2>
+        <p>以下问题来自玩家在探索隐藏结局过程中最常遇到的困惑，回答尽量保持通用，以便适用于不同版本。</p>
+      </div>
+
+      <div class="faq">
+        <details open>
+          <summary>隐藏结局需要二周目才能触发吗？</summary>
+          <p>不一定。如果一周目中已经满足全部前置条件，通常可以在终章直接进入隐藏分支。但如果错过了无法回补的道具或支线，就需要通过读档或开启新周目重新完成。</p>
+        </details>
+        <details>
+          <summary>选错对话会导致隐藏结局永久失败吗？</summary>
+          <p>取决于作品设计。部分作品允许在后续对话中弥补，也有作品会直接锁定分支。稳妥的做法是在关键对话前手动存档，方便随时回退。</p>
+        </details>
+        <details>
+          <summary>为什么我已经完成所有支线，隐藏选项还是没有出现？</summary>
+          <p>可以检查三点：是否遗漏了地图上的可选交互点；是否完整观看过相关过场；是否在终章前触发了某个特定场景。隐藏判定通常是多条件叠加，而非单一条件。</p>
+        </details>
+        <details>
+          <summary>隐藏结局和真结局是同一个吗？</summary>
+          <p>在很多作品中两者会重合，但也有作品将“真结局”作为主线收束，把“隐藏结局”作为额外的角色补完内容。建议以游戏内的结局列表或成就描述为准。</p>
+        </details>
+        <details>
+          <summary>有没有必要看攻略再玩？</summary>
+          <p>如果更看重探索体验，可以先自行通关一次，再借助清单补齐遗漏内容。若时间有限，直接按条件清单推进也能有效减少重复流程。</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <h4>冒险的阿曼达 · 隐藏结局研究站</h4>
+        <p>专注整理《冒险的阿曼达》的结局分支、触发条件与剧情线索，帮助玩家更顺畅地完成结局收集，减少无效重复流程。</p>
+      </div>
+      <div>
+        <h4>内容导航</h4>
+        <ul class="footer-links">
+          <li><a href="#conditions">触发条件</a></li>
+          <li><a href="#steps">解锁流程</a></li>
+          <li><a href="#endings">结局对照</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>深入阅读</h4>
+        <ul class="footer-links">
+          <li><a href="#analysis">剧情解析</a></li>
+          <li><a href="#faq">常见问题</a></li>
+          <li><a href="#conditions">道具收集要点</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>探索提示</h4>
+        <ul class="footer-links">
+          <li><a href="#steps">关键对话选择</a></li>
+          <li><a href="#endings">结局差异说明</a></li>
+          <li><a href="#faq">版本差异答疑</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>本站内容为玩家向整理，具体判定以实际游戏版本为准。</span>
+      <span>冒险的阿曼达隐藏结局 · 专题页</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // 平滑滚动兜底（部分旧版浏览器不支持 scroll-behavior）
+  document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      var id = this.getAttribute('href');
+      if (id.length < 2) return;
+      var target = document.querySelector(id);
+      if (!target) return;
+      e.preventDefault();
+      var top = target.getBoundingClientRect().top + window.pageYOffset - 70;
+      window.scrollTo({ top: top, behavior: 'smooth' });
+    });
+  });
+</script>
+
+</body>
+  </html>
