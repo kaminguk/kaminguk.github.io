@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>懂窝-年轻人的兴趣交流与经验分享社区</title>
+<meta name="description" content="懂窝是一个面向年轻人的兴趣交流与经验分享社区，聚合数码、职场、生活、学习等话题，提供热门讨论、实用经验与参与指南，帮助你在感兴趣的圈子里找到同好。">
+<meta name="keywords" content="懂窝,兴趣社区,经验分享,交流社区,话题讨论,同好圈子">
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+<style>
+  :root{
+    --bg:#f5f6fa;
+    --surface:#ffffff;
+    --ink:#1c2033;
+    --ink-soft:#5a6079;
+    --line:#e6e8f0;
+    --brand:#3d5afe;
+    --brand-soft:#eaeeff;
+    --accent:#ff6b4a;
+    --accent-soft:#fff0ec;
+    --radius:16px;
+    --shadow:0 6px 24px rgba(28,32,51,.07);
+    --maxw:1180px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Helvetica Neue",Arial,sans-serif;
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  h1,h2,h3,h4{margin:0;line-height:1.35;font-weight:700;}
+  p{margin:0;}
+  ul{margin:0;padding:0;list-style:none;}
+
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px;}
+
+  /* ---------- header ---------- */
+  .site-header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(255,255,255,.92);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .header-inner{
+    display:flex;align-items:center;gap:28px;
+    height:68px;
+  }
+  .logo{
+    display:flex;align-items:center;gap:10px;
+    font-size:1.3rem;font-weight:800;letter-spacing:.5px;
+    flex:0 0 auto;
+  }
+  .logo-mark{
+    width:34px;height:34px;border-radius:10px;
+    background:linear-gradient(135deg,var(--brand),#7c4dff);
+    color:#fff;display:grid;place-items:center;
+    font-size:1rem;font-weight:800;
+  }
+  .main-nav{
+    display:flex;gap:22px;font-size:.95rem;color:var(--ink-soft);
+    flex:1 1 auto;
+  }
+  .main-nav a{padding:6px 2px;border-bottom:2px solid transparent;transition:.2s;}
+  .main-nav a:hover{color:var(--brand);border-bottom-color:var(--brand);}
+  .header-actions{display:flex;gap:10px;flex:0 0 auto;}
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;
+    padding:9px 20px;border-radius:999px;font-size:.92rem;font-weight:600;
+    border:1px solid transparent;cursor:pointer;transition:.2s;
+    white-space:nowrap;
+  }
+  .btn-primary{background:var(--brand);color:#fff;}
+  .btn-primary:hover{background:#2c46d8;}
+  .btn-ghost{background:transparent;color:var(--ink-soft);border-color:var(--line);}
+  .btn-ghost:hover{color:var(--brand);border-color:var(--brand);}
+  .nav-toggle{
+    display:none;background:none;border:1px solid var(--line);
+    border-radius:10px;width:40px;height:38px;font-size:1.1rem;
+    color:var(--ink);cursor:pointer;
+  }
+
+  /* ---------- hero ---------- */
+  .hero{
+    background:
+      radial-gradient(900px 420px at 88% -10%,#e6ebff 0%,rgba(230,235,255,0) 70%),
+      radial-gradient(700px 380px at 5% 110%,#fff0ec 0%,rgba(255,240,236,0) 70%),
+      #ffffff;
+    border-bottom:1px solid var(--line);
+    padding:64px 0 56px;
+  }
+  .hero-grid{
+    display:grid;grid-template-columns:1.15fr .85fr;
+    gap:48px;align-items:center;
+  }
+  .hero-tag{
+    display:inline-block;background:var(--brand-soft);color:var(--brand);
+    font-size:.82rem;font-weight:700;padding:5px 14px;border-radius:999px;
+    margin-bottom:18px;letter-spacing:.5px;
+  }
+  .hero h1{font-size:2.5rem;letter-spacing:-.5px;}
+  .hero h1 em{font-style:normal;color:var(--brand);}
+  .hero-lead{
+    margin-top:18px;font-size:1.05rem;color:var(--ink-soft);max-width:560px;
+  }
+  .hero-cta{display:flex;gap:14px;margin-top:28px;flex-wrap:wrap;}
+  .hero-stats{
+    display:flex;gap:34px;margin-top:38px;flex-wrap:wrap;
+  }
+  .hero-stats div{font-size:.86rem;color:var(--ink-soft);}
+  .hero-stats strong{
+    display:block;font-size:1.35rem;color:var(--ink);font-weight:800;
+  }
+  .hero-panel{
+    background:var(--surface);border:1px solid var(--line);
+    border-radius:20px;box-shadow:var(--shadow);padding:22px;
+  }
+  .hero-panel h3{font-size:1rem;margin-bottom:14px;}
+  .topic-list li{
+    display:flex;align-items:center;gap:12px;
+    padding:11px 0;border-bottom:1px dashed var(--line);
+    font-size:.93rem;
+  }
+  .topic-list li:last-child{border-bottom:0;}
+  .topic-rank{
+    width:24px;height:24px;border-radius:8px;background:var(--brand-soft);
+    color:var(--brand);font-size:.78rem;font-weight:800;
+    display:grid;place-items:center;flex:0 0 auto;
+  }
+  .topic-list .hot .topic-rank{background:var(--accent-soft);color:var(--accent);}
+  .topic-list span.meta{margin-left:auto;color:var(--ink-soft);font-size:.8rem;}
+
+  /* ---------- section base ---------- */
+  section{padding:56px 0;}
+  .section-head{
+    display:flex;align-items:flex-end;justify-content:space-between;
+    gap:20px;margin-bottom:28px;flex-wrap:wrap;
+  }
+  .section-head h2{font-size:1.6rem;letter-spacing:-.3px;}
+  .section-head p{color:var(--ink-soft);font-size:.95rem;margin-top:8px;max-width:640px;}
+  .more-link{font-size:.9rem;color:var(--brand);font-weight:600;}
+
+  /* ---------- 频道 ---------- */
+  .channel-grid{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:18px;
+  }
+  .channel-card{
+    background:var(--surface);border:1px solid var(--line);
+    border-radius:var(--radius);padding:22px 20px;transition:.22s;
+  }
+  .channel-card:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:#d5dbf5;}
+  .channel-icon{
+    width:42px;height:42px;border-radius:12px;display:grid;place-items:center;
+    font-size:1.15rem;margin-bottom:14px;background:var(--brand-soft);color:var(--brand);
+  }
+  .channel-card:nth-child(2) .channel-icon{background:#e9f7f0;color:#13a06a;}
+  .channel-card:nth-child(3) .channel-icon{background:var(--accent-soft);color:var(--accent);}
+  .channel-card:nth-child(4) .channel-icon{background:#f3ecff;color:#7c4dff;}
+  .channel-card h3{font-size:1.02rem;margin-bottom:8px;}
+  .channel-card p{font-size:.88rem;color:var(--ink-soft);}
+  .channel-card .count{
+    display:inline-block;margin-top:14px;font-size:.78rem;color:var(--ink-soft);
+    background:var(--bg);padding:3px 10px;border-radius:999px;
+  }
+
+  /* ---------- 讨论 ---------- */
+  .discuss-layout{
+    display:grid;grid-template-columns:1.55fr .95fr;gap:26px;align-items:start;
+  }
+  .post-list{display:flex;flex-direction:column;gap:14px;}
+  .post{
+    background:var(--surface);border:1px solid var(--line);
+    border-radius:var(--radius);padding:20px 22px;transition:.2s;
+  }
+  .post:hover{border-color:#d5dbf5;box-shadow:var(--shadow);}
+  .post-head{display:flex;align-items:center;gap:10px;margin-bottom:10px;}
+  .avatar{
+    width:30px;height:30px;border-radius:50%;flex:0 0 auto;
+    display:grid;place-items:center;font-size:.78rem;font-weight:800;color:#fff;
+    background:linear-gradient(135deg,#5b7cff,#7c4dff);
+  }
+  .post:nth-child(2) .avatar{background:linear-gradient(135deg,#ff8a5c,#ff5c8a);}
+  .post:nth-child(3) .avatar{background:linear-gradient(135deg,#22c58b,#0fa97a);}
+  .post:nth-child(4) .avatar{background:linear-gradient(135deg,#8a7cff,#5b5bff);}
+  .post-author{font-size:.86rem;font-weight:600;}
+  .post-time{font-size:.78rem;color:var(--ink-soft);}
+  .post-tag{
+    margin-left:auto;font-size:.75rem;color:var(--brand);
+    background:var(--brand-soft);padding:3px 10px;border-radius:999px;
+  }
+  .post h3{font-size:1.05rem;margin-bottom:8px;}
+  .post p{font-size:.9rem;color:var(--ink-soft);}
+  .post-foot{
+    display:flex;gap:20px;margin-top:14px;font-size:.8rem;color:var(--ink-soft);
+  }
+
+  .side-card{
+    background:var(--surface);border:1px solid var(--line);
+    border-radius:var(--radius);padding:22px;margin-bottom:18px;
+  }
+  .side-card h3{font-size:1rem;margin-bottom:14px;}
+  .guide-list li{
+    font-size:.88rem;color:var(--ink-soft);padding:9px 0 9px 20px;
+    position:relative;border-bottom:1px dashed var(--line);
+  }
+  .guide-list li:last-child{border-bottom:0;}
+  .guide-list li::before{
+    content:"";position:absolute;left:0;top:17px;
+    width:7px;height:7px;border-radius:50%;background:var(--brand);
+  }
+  .tag-cloud{display:flex;flex-wrap:wrap;gap:9px;}
+  .tag-cloud a{
+    font-size:.82rem;color:var(--ink-soft);background:var(--bg);
+    padding:5px 13px;border-radius:999px;transition:.2s;
+  }
+  .tag-cloud a:hover{background:var(--brand);color:#fff;}
+
+  /* ---------- 经验指南 ---------- */
+  .guide-band{background:#ffffff;border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .guide-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+  .guide-card{
+    border:1px solid var(--line);border-radius:var(--radius);
+    padding:24px 22px;background:var(--surface);transition:.2s;
+  }
+  .guide-card:hover{box-shadow:var(--shadow);transform:translateY(-3px);}
+  .guide-card .num{
+    font-size:.78rem;font-weight:800;color:var(--brand);
+    letter-spacing:1px;margin-bottom:12px;display:block;
+  }
+  .guide-card h3{font-size:1.05rem;margin-bottom:10px;}
+  .guide-card p{font-size:.89rem;color:var(--ink-soft);}
+  .guide-card ul{margin-top:14px;}
+  .guide-card ul li{
+    font-size:.85rem;color:var(--ink-soft);
+    padding-left:16px;position:relative;margin-bottom:6px;
+  }
+  .guide-card ul li::before{
+    content:"·";position:absolute;left:4px;top:-1px;color:var(--brand);font-weight:800;
+  }
+
+  /* ---------- 常见问题 ---------- */
+  .faq-wrap{max-width:860px;margin:0 auto;}
+  .faq-item{
+    background:var(--surface);border:1px solid var(--line);
+    border-radius:14px;margin-bottom:12px;overflow:hidden;
+  }
+  .faq-q{
+    width:100%;text-align:left;background:none;border:0;cursor:pointer;
+    padding:18px 22px;font-size:.98rem;font-weight:600;color:var(--ink);
+    display:flex;align-items:center;gap:14px;font-family:inherit;
+  }
+  .faq-q .mark{
+    flex:0 0 auto;width:22px;height:22px;border-radius:50%;
+    background:var(--brand-soft);color:var(--brand);
+    display:grid;place-items:center;font-size:.85rem;font-weight:800;
+    transition:.25s;
+  }
+  .faq-item.open .faq-q .mark{background:var(--brand);color:#fff;transform:rotate(45deg);}
+  .faq-a{
+    max-height:0;overflow:hidden;transition:max-height .3s ease;
+    padding:0 22px;color:var(--ink-soft);font-size:.9rem;
+  }
+  .faq-item.open .faq-a{max-height:320px;padding-bottom:20px;}
+
+  /* ---------- CTA ---------- */
+  .cta-band{
+    background:linear-gradient(135deg,#2f3fd6,#5b3df0);
+    border-radius:22px;color:#fff;padding:46px 40px;
+    display:flex;align-items:center;justify-content:space-between;
+    gap:28px;flex-wrap:wrap;
+  }
+  .cta-band h2{font-size:1.55rem;margin-bottom:10px;}
+  .cta-band p{color:rgba(255,255,255,.82);font-size:.95rem;max-width:560px;}
+  .cta-band .btn-primary{background:#fff;color:#2f3fd6;}
+  .cta-band .btn-primary:hover{background:#eef0ff;}
+
+  /* ---------- footer ---------- */
+  .site-footer{
+    background:#161a2b;color:#a9aec4;padding:52px 0 26px;font-size:.88rem;
+  }
+  .footer-grid{
+    display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:32px;
+  }
+  .site-footer h4{color:#fff;font-size:.95rem;margin-bottom:16px;}
+  .site-footer .logo{color:#fff;margin-bottom:14px;}
+  .site-footer p{font-size:.85rem;line-height:1.8;max-width:300px;}
+  .footer-links li{margin-bottom:10px;}
+  .footer-links a:hover{color:#fff;}
+  .footer-bottom{
+    border-top:1px solid rgba(255,255,255,.1);
+    margin-top:38px;padding-top:20px;
+    display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
+    font-size:.8rem;color:#7d829a;
+  }
+
+  /* ---------- responsive ---------- */
+  @media (max-width:1024px){
+    .channel-grid{grid-template-columns:repeat(2,1fr);}
+    .guide-grid{grid-template-columns:1fr;}
+    .hero-grid{grid-template-columns:1fr;gap:34px;}
+    .discuss-layout{grid-template-columns:1fr;}
+    .footer-grid{grid-template-columns:1fr 1fr;}
+  }
+  @media (max-width:760px){
+    .main-nav{display:none;}
+    .main-nav.show{
+      display:flex;flex-direction:column;gap:0;
+      position:absolute;top:68px;left:0;right:0;
+      background:#fff;border-bottom:1px solid var(--line);
+      padding:10px 20px 18px;
+    }
+    .main-nav.show a{padding:12px 0;border-bottom:1px solid var(--line);}
+    .nav-toggle{display:block;}
+    .header-inner{gap:14px;}
+    .header-actions .btn-ghost{display:none;}
+    .hero{padding:44px 0 40px;}
+    .hero h1{font-size:1.85rem;}
+    .hero-stats{gap:22px;}
+    section{padding:42px 0;}
+    .channel-grid{grid-template-columns:1fr;}
+    .cta-band{padding:34px 24px;}
+    .footer-grid{grid-template-columns:1fr;}
+    .site-footer p{max-width:none;}
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a href="#" class="logo" aria-label="懂窝首页">
+      <span class="logo-mark">懂</span>
+      <span>懂窝</span>
+    </a>
+    <nav class="main-nav" id="mainNav" aria-label="主导航">
+      <a href="#channels">兴趣频道</a>
+      <a href="#discuss">热门讨论</a>
+      <a href="#guides">经验指南</a>
+      <a href="#faq">常见问题</a>
+    </nav>
+    <div class="header-actions">
+      <a href="#discuss" class="btn btn-ghost">随便逛逛</a>
+      <a href="#cta" class="btn btn-primary">加入懂窝</a>
+      <button class="nav-toggle" id="navToggle" aria-label="展开导航">☰</button>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="hero-tag">兴趣社区 · 经验共享</span>
+        <h1>在<em>懂窝</em>，把懂的东西说出来，把想懂的事问出来</h1>
+        <p class="hero-lead">
+          懂窝是一个面向年轻人的兴趣交流与经验分享社区。无论你关注的是数码、职场、生活方式还是学习成长，
+          都能在这里找到正在讨论同一件事的人。发帖提问、记录心得、参与话题，让零散的经验慢慢聚成有用的答案。
+        </p>
+        <div class="hero-cta">
+          <a href="#channels" class="btn btn-primary">浏览兴趣频道</a>
+          <a href="#guides" class="btn btn-ghost">看看怎么参与</a>
+        </div>
+        <div class="hero-stats">
+          <div><strong>4 大</strong>兴趣方向</div>
+          <div><strong>每日</strong>话题更新</div>
+          <div><strong>开放</strong>提问与回答</div>
+        </div>
+      </div>
+      <aside class="hero-panel" aria-label="今日热议话题">
+        <h3>今日热议</h3>
+        <ul class="topic-list">
+          <li class="hot"><span class="topic-rank">1</span>第一次装机，预算怎么分配更合理？<span class="meta">讨论中</span></li>
+          <li><span class="topic-rank">2</span>通勤路上适合听什么类型的播客<span class="meta">讨论中</span></li>
+          <li><span class="topic-rank">3</span>租房改造有哪些不动墙面的办法<span class="meta">讨论中</span></li>
+          <li><span class="topic-rank">4</span>工作三年后，要不要换赛道<span class="meta">讨论中</span></li>
+          <li><span class="topic-rank">5</span>自学一门新技能，怎么坚持下来<span class="meta">讨论中</span></li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <!-- 频道 -->
+  <section id="channels">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <h2>兴趣频道</h2>
+          <p>按方向划分的讨论区，每个频道都围绕一个相对明确的主题，方便你快速找到同好，也方便别人找到你。</p>
+        </div>
+        <a href="#discuss" class="more-link">查看全部讨论 →</a>
+      </div>
+      <div class="channel-grid">
+        <article class="channel-card">
+          <div class="channel-icon">◈</div>
+          <h3>数码与工具</h3>
+          <p>电脑、手机、外设、效率软件与日常工具的使用心得，聊配置，也聊怎么用得更顺手。</p>
+          <span class="count">装机 · 外设 · 效率</span>
+        </article>
+        <article class="channel-card">
+          <div class="channel-icon">◉</div>
+          <h3>职场与成长</h3>
+          <p>求职准备、沟通协作、职业规划与技能提升，分享真实经历，不贩卖焦虑。</p>
+          <span class="count">求职 · 协作 · 规划</span>
+        </article>
+        <article class="channel-card">
+          <div class="channel-icon">◎</div>
+          <h3>生活方式</h3>
+          <p>居住空间、饮食日常、旅行见闻与兴趣消遣，记录那些让生活变舒服的小办法。</p>
+          <span class="count">居住 · 饮食 · 出行</span>
+        </article>
+        <article class="channel-card">
+          <div class="channel-icon">◇</div>
+          <h3>学习与阅读</h3>
+          <p>读书笔记、学习方法、语言练习与知识整理，把学到的东西讲清楚才算真的学会。</p>
+          <span class="count">读书 · 方法 · 语言</span>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 讨论 -->
+  <section id="discuss" style="padding-top:0;">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <h2>热门讨论</h2>
+          <p>来自不同频道的帖子，内容以提问、经验复盘和观点交流为主。点击进入可以继续跟帖。</p>
+        </div>
+      </div>
+      <div class="discuss-layout">
+        <div class="post-list">
+
+          <article class="post">
+            <div class="post-head">
+              <span class="avatar">阿</span>
+              <div>
+                <div class="post-author">阿柚</div>
+                <div class="post-time">发布于数码与工具频道</div>
+              </div>
+              <span class="post-tag">装机</span>
+            </div>
+            <h3>第一次自己装机，预算怎么分配更合理？</h3>
+            <p>把大部分预算放在显卡还是处理器上，取决于你主要用来做什么。如果以游戏为主，显卡优先级更高；
+              如果经常做视频剪辑或多任务处理，处理器和内存的权重就要提上来。电源和散热不建议压得太狠，
+              它们决定的是整机稳定性，而不是跑分。</p>
+            <div class="post-foot">
+              <span>💬 跟帖交流</span>
+              <span>♡ 有用</span>
+            </div>
+          </article>
+
+          <article class="post">
+            <div class="post-head">
+              <span class="avatar">林</span>
+              <div>
+                <div class="post-author">林间</div>
+                <div class="post-time">发布于职场与成长频道</div>
+              </div>
+              <span class="post-tag">职业规划</span>
+            </div>
+            <h3>工作三年后想换赛道，应该先做哪些准备？</h3>
+            <p>先别急着辞职。比较稳妥的做法是：用业余时间把目标方向的最小可行能力补齐，
+              做出一个可以拿得出手的作品或项目，再去接触目标行业的从业者了解真实情况。
+              当你能清楚说出「我为什么适合」而不是「我想试试」的时候，再考虑正式转。</p>
+            <div class="post-foot">
+              <span>💬 跟帖交流</span>
+              <span>♡ 有用</span>
+            </div>
+          </article>
+
+          <article class="post">
+            <div class="post-head">
+              <span class="avatar">南</span>
+              <div>
+                <div class="post-author">南风</div>
+                <div class="post-time">发布于生活方式频道</div>
+              </div>
+              <span class="post-tag">居住</span>
+            </div>
+            <h3>租房不想动墙面，怎么让房间看起来舒服一点？</h3>
+            <p>不动墙面的改造空间其实不小：灯光换成暖色光源、用落地灯替代顶灯，地面加一块地毯划分区域，
+              收纳尽量统一颜色和材质。核心思路是减少视觉噪音，而不是买更多东西。</p>
+            <div class="post-foot">
+              <span>💬 跟帖交流</span>
+              <span>♡ 有用</span>
+            </div>
+          </article>
+
+          <article class="post">
+            <div class="post-head">
+              <span class="avatar">之</span>
+              <div>
+                <div class="post-author">之乎</div>
+                <div class="post-time">发布于学习与阅读频道</div>
+              </div>
+              <span class="post-tag">学习方法</span>
+            </div>
+            <h3>自学一门新技能，怎么才能坚持下来？</h3>
+            <p>把目标拆到「今天就能做完」的粒度，比制定宏大的学习计划更有效。
+              另外，把学习过程写下来发到懂窝，有人回应的时候，坚持下去的动力会明显不一样。</p>
+            <div class="post-foot">
+              <span>💬 跟帖交流</span>
+              <span>♡ 有用</span>
+            </div>
+          </article>
+
+        </div>
+
+        <aside>
+          <div class="side-card">
+            <h3>新手参与指南</h3>
+            <ul class="guide-list">
+              <li>先浏览感兴趣的频道，看看大家在聊什么</li>
+              <li>提问时写清背景和已经尝试过的办法</li>
+              <li>分享经验时说明适用条件，避免绝对化结论</li>
+              <li>对不同观点保持耐心，讨论对事不对人</li>
+            </ul>
+          </div>
+          <div class="side-card">
+            <h3>热门标签</h3>
+            <div class="tag-cloud">
+              <a href="#discuss">装机</a>
+              <a href="#discuss">效率工具</a>
+              <a href="#discuss">求职</a>
+              <a href="#discuss">沟通</a>
+              <a href="#discuss">租房</a>
+              <a href="#discuss">读书笔记</a>
+              <a href="#discuss">语言学习</a>
+              <a href="#discuss">时间管理</a>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- 经验指南 -->
+  <section class="guide-band" id="guides">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <h2>经验指南</h2>
+          <p>懂窝的讨论大多围绕「怎么做」展开。下面三个方向是社区里被反复提到的话题，也是新成员最容易上手参与的地方。</p>
+        </div>
+      </div>
+      <div class="guide-grid">
+
+        <article class="guide-card">
+          <span class="num">01 / 提问</span>
+          <h3>怎么提问，才更容易得到有效回答</h3>
+          <p>好的提问自带一半答案。把问题说清楚，别人才能给出具体建议，而不是泛泛而谈。</p>
+          <ul>
+            <li>说明你的具体场景和已有条件</li>
+            <li>写清已经尝试过哪些方法</li>
+            <li>把问题收窄到一个明确的点上</li>
+            <li>避免「哪个更好」这类没有前提的比较</li>
+          </ul>
+        </article>
+
+        <article class="guide-card">
+          <span class="num">02 / 分享</span>
+          <h3>怎么把经验写得对别人有用</h3>
+          <p>经验分享的价值在于可复用。写清背景和边界条件，比给出一句结论更有帮助。</p>
+          <ul>
+            <li>先交代背景，再讲做法和结果</li>
+            <li>说明适用范围，避免一概而论</li>
+            <li>记录踩过的坑，往往比成功经验更值钱</li>
+            <li>涉及他人信息时注意隐私</li>
+          </ul>
+        </article>
+
+        <article class="guide-card">
+          <span class="num">03 / 交流</span>
+          <h3>怎么在社区里保持舒服的讨论氛围</h3>
+          <p>懂窝希望是一个可以放心提问的地方，这需要每个参与者共同维护。</p>
+          <ul>
+            <li>对事不对人，先理解再反驳</li>
+            <li>不确定的信息标明来源或存疑</li>
+            <li>不发布广告和与频道无关的内容</li>
+            <li>遇到分歧时，允许彼此保留观点</li>
+          </ul>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="wrap">
+      <div class="section-head" style="justify-content:center;text-align:center;">
+        <div>
+          <h2>常见问题</h2>
+          <p style="margin-left:auto;margin-right:auto;">关于懂窝是什么、能做什么、怎么参与，这里集中回答几个最常被问到的问题。</p>
+        </div>
+      </div>
+      <div class="faq-wrap">
+
+        <div class="faq-item">
+          <button class="faq-q" type="button">
+            <span class="mark">+</span>
+            懂窝是一个什么样的社区？
+          </button>
+          <div class="faq-a">
+            <p>懂窝是一个以兴趣和经验分享为核心的交流社区。它不追求信息量的堆砌，而是希望每个话题下都有相对具体的讨论：
+              有人提出问题，有人分享做法，也有人补充不同角度的看法。你可以把它理解成一个围绕兴趣方向组织起来的讨论空间。</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" type="button">
+            <span class="mark">+</span>
+            我可以在懂窝做什么？
+          </button>
+          <div class="faq-a">
+            <p>常见的使用方式包括：浏览兴趣频道了解大家在关注什么；发帖提出自己的疑问；把自己的经验整理成文字分享出来；
+              在别人的帖子下补充观点或提供参考。即使只是安静地看，也能从已有的讨论里找到不少有用的信息。</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" type="button">
+            <span class="mark">+</span>
+            在懂窝提问有什么需要注意的？
+          </button>
+          <div class="faq-a">
+            <p>建议先把背景交代清楚：你在什么场景下遇到这个问题、已经尝试过什么、卡在哪一步。
+              问题越具体，得到的回答越有针对性。同时尽量避免把提问变成开放式投票，因为不同人的条件不同，
+              直接比较结论往往意义有限。</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" type="button">
+            <span class="mark">+</span>
+            懂窝的内容适合直接当作决策依据吗？
+          </button>
+          <div class="faq-a">
+            <p>社区里的经验大多来自个人实践，参考价值高，但适用范围有限。涉及消费、健康、法律、
+              财务等具体决策时，建议结合官方信息或专业人士的意见综合判断，不要只依赖单一帖子的说法。</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" type="button">
+            <span class="mark">+</span>
+            什么样的内容不适合发在懂窝？
+          </button>
+          <div class="faq-a">
+            <p>与频道主题无关的广告、诱导性链接、涉及他人隐私的信息，以及明显带有攻击性的言论，
+              都不适合发布。社区希望保持讨论的清晰和友善，这需要每个参与者一起维护。</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section id="cta" style="padding-top:0;">
+    <div class="wrap">
+      <div class="cta-band">
+        <div>
+          <h2>找到你的那个圈子</h2>
+          <p>不管你是想解决一个具体问题，还是单纯想找人聊聊最近在琢磨的事，懂窝都欢迎你从一条帖子开始。</p>
+        </div>
+        <a href="#channels" class="btn btn-primary">进入兴趣频道</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div class="logo">
+          <span class="logo-mark">懂</span>
+          <span>懂窝</span>
+        </div>
+        <p>一个围绕兴趣与经验展开讨论的社区，让懂的人愿意讲，让想懂的人找得到答案。</p>
+      </div>
+      <div>
+        <h4>兴趣频道</h4>
+        <ul class="footer-links">
+          <li><a href="#channels">数码与工具</a></li>
+          <li><a href="#channels">职场与成长</a></li>
+          <li><a href="#channels">生活方式</a></li>
+          <li><a href="#channels">学习与阅读</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>社区内容</h4>
+        <ul class="footer-links">
+          <li><a href="#discuss">热门讨论</a></li>
+          <li><a href="#guides">经验指南</a></li>
+          <li><a href="#faq">常见问题</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>参与方式</h4>
+        <ul class="footer-links">
+          <li><a href="#guides">如何提问</a></li>
+          <li><a href="#guides">如何分享</a></li>
+          <li><a href="#cta">加入懂窝</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 懂窝 · 兴趣交流与经验分享社区</span>
+      <span>社区内容由成员分享，仅供参考</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    var toggle = document.getElementById('navToggle');
+    var nav = document.getElementById('mainNav');
+    if (toggle && nav) {
+      toggle.addEventListener('click', function () {
+        nav.classList.toggle('show');
+      });
+      nav.addEventListener('click', function (e) {
+        if (e.target.tagName === 'A') {
+          nav.classList.remove('show');
+        }
+      });
+    }
+
+    var questions = document.querySelectorAll('.faq-q');
+    questions.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var item = btn.parentElement;
+        var isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item').forEach(function (el) {
+          el.classList.remove('open');
+        });
+        if (!isOpen) {
+          item.classList.add('open');
+        }
+      });
+    });
+  })();
+</script>
+
+</body>
+  </html>
